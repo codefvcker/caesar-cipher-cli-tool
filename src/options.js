@@ -12,8 +12,6 @@ program
   .option('-a,--action <type>', 'Act')
   .parse()
 
-console.log(program.opts())
-
 const options = optionsValidateHandler(program.opts())
 
 module.exports = options

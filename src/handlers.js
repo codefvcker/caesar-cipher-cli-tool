@@ -8,7 +8,7 @@ const errorHandler = err => {
 }
 
 const optionsValidateHandler = options => {
-  const { input, action, shift } = options
+  const { input, action, shift, output } = options
 
   if (action !== 'encode' && action !== 'decode') {
     process.stderr.write('error: type correct action')
@@ -20,6 +20,15 @@ const optionsValidateHandler = options => {
       fs.accessSync(input, fs.constants.F_OK | fs.constants.R_OK)
     } catch (err) {
       process.stderr.write("error: no input file or it doesn't readable")
+      process.exit(1)
+    }
+  }
+
+  if (output) {
+    try {
+      fs.accessSync(output, fs.constants.F_OK | fs.constants.W_OK)
+    } catch (err) {
+      process.stderr.write("error: no output file or it doesn't readable")
       process.exit(1)
     }
   }
