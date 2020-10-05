@@ -41,23 +41,44 @@ const optionsValidateHandler = options => {
   return options
 }
 
+const modeHandler = (charCode, shiftResult, action) => {
+  let resultSum
+  let sumDiff
+  if (charCode >= 65 && charCode <= 90) {
+    if (action === 'encode') {
+      resultSum = charCode + shiftResult
+      sumDiff = resultSum - 91
+      return resultSum > 90 ? 65 + sumDiff : resultSum
+    } else {
+      resultSum = charCode - shiftResult
+      sumDiff = 64 - resultSum
+      return resultSum < 65 ? 90 - sumDiff : resultSum
+    }
+  }
+  if (charCode >= 97 && charCode <= 122) {
+    if (action === 'encode') {
+      resultSum = charCode + shiftResult
+      sumDiff = resultSum - 123
+      return resultSum > 122 ? 97 + sumDiff : resultSum
+    } else {
+      resultSum = charCode - shiftResult
+      sumDiff = 96 - resultSum
+      return resultSum < 97 ? 122 - sumDiff : resultSum
+    }
+  }
+  return charCode
+}
+
 const cipherHandler = (text, action, shiftNum) => {
   return text
     .toString()
     .replace(/(\r\n|\n|\r)/gm, '')
     .split('')
     .map(item => {
-      if (
-        (item.charCodeAt() >= 65 && item.charCodeAt() <= 90) ||
-        (item.charCodeAt() >= 97 && item.charCodeAt() <= 122)
-      ) {
-        return String.fromCharCode(
-          action === 'encode'
-            ? item.charCodeAt() + (shiftNum % 27)
-            : item.charCodeAt() - (shiftNum % 27)
-        )
-      }
-      return item
+      let shiftResult = shiftNum % 26
+      return String.fromCharCode(
+        modeHandler(item.charCodeAt(), shiftResult, action)
+      )
     })
     .join('')
 }
