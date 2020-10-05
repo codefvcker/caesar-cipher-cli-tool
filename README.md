@@ -28,8 +28,8 @@ _Remember! Action (encode/decode) and the shift are required._
 
 #### Usage example:
 
--`$ node build/ -a encode -s 7 -i "./input.txt" -o "./output.txt"`
+-`$ node index.js -a encode -s 7 -i "./input.txt" -o "./output.txt"`
 
--`$ node build/ --action encode --shift 7 --input plain.txt --output encoded.txt`
+-`$ node index.js --action encode --shift 7 --input plain.txt --output encoded.txt`
 
--`$ node build/ --action decode --shift 7 --input decoded.txt --output plain.txt`
+-`$ node index.js --action decode --shift 7 --input decoded.txt --output plain.txt`
