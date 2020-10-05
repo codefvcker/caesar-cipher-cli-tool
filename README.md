@@ -1,8 +1,8 @@
 # caesar-cipher-cli-tool
 
-## How to start
-
 ---
+
+## How to start
 
 1.git clone https://github.com/codefvcker/caesar-cipher-cli-tool.git
 
@@ -13,8 +13,6 @@
 4.Done!
 
 ## Now you can run the app
-
----
 
 #### Arguments
 
@@ -28,7 +26,7 @@
 
 _Remember! Action (encode/decode) and the shift are required._
 
-Usage example:
+#### Usage example:
 
 -`$ node build/ -a encode -s 7 -i "./input.txt" -o "./output.txt"`
 
