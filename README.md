@@ -6,7 +6,7 @@
 
 1.git clone https://github.com/codefvcker/caesar-cipher-cli-tool.git
 
-2.cd caesar-cipher-cli-tool
+2.cd caesar-cipher-cli-tool/caesar-cipher-cli
 
 3.npm i
 
